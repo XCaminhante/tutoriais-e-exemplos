@@ -108,8 +108,7 @@ proc alternar_portas
 endp
 
 segment readable writeable
-; Esse segmento não vai adicionar nenhum espaço físico no executável final.
-; O Linux vai inicializar isso aqui pra gente
-;   preenchendo com bytes zero, só na hora da execução.
+; Esse segmento não adiciona nenhum espaço físico no executável final.
+; O Linux inicializa pra mim/nós preenchendo com bytes zero, só na hora da execução.
 
 portas rb 100 ; reservados 100 bytes
