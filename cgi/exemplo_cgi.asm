@@ -1,8 +1,8 @@
 ; Compile com fasm
 format elf executable 3
 entry início
-  include 'proc32.inc'
-  include 'symbols.inc'
+  include 'proc32.inc' ;vem com o Fasm
+  include 'symbols.inc' ;http://lscr.sourceforge.net/
 
 segment executable
   include 'print.inc'
