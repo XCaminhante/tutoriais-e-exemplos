@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title> Regressão linear </title>
+  </head>
+  <body>
+    <p> Forneça dois pontos de uma reta, esse código acha a equação da reta </p>
+    <label>Digite no formato "x0 y0 x1 y1": <input onkeyup="achar_pontos(receber_coordenadas(this));" value="2 3 8 9"></label>
+    <p id='corpo'></p>
+    <script>
+
+function escreva (texto) {
+  var p = document.createElement('p')
+  p.textContent = texto
+  corpo.appendChild(p)
+}
+
+function limpe () {
+  corpo.innerHTML = ''
+}
+
+function receber_coordenadas (elemento) {
+  var coordenadas = elemento.value.replace(/^\s+|\s+$/,'').replace(/\s+/,' ').split(' ')
+  if (coordenadas.length != 4)
+    throw ('Número incorreto de argumentos')
+  for (var a = 0; a < coordenadas.length; a++) {
+    coordenadas[a] = Math.floor(Number(coordenadas[a]))
+    if (isNaN(coordenadas[a]))
+      throw ('Formato incorreto da entrada')
+  }
+  return coordenadas
+}
+
+function achar_pontos (coordenadas) {
+  limpe()
+  var sx = coordenadas[0] + coordenadas[2],
+    sy = coordenadas[1] + coordenadas[3],
+    sx2 = coordenadas[0]*coordenadas[0] + coordenadas[2]*coordenadas[2],
+    sxy = coordenadas[0]*coordenadas[1] + coordenadas[2]*coordenadas[3],
+    a = (2*sxy - sx*sy)/(2*sx2 - sx*sx),
+    b = (sy - a*sx)/2
+
+  escreva('Os coeficientes são: a=' + a + '; b=' + b)
+  for (var x = coordenadas[0]; x <= coordenadas[2]; x++) {
+    escreva('(' + x + ',' + (x*a+b) + ')')
+  }
+}
+            // x0, y0, x1, y1
+achar_pontos([  2,  3,  8,  9 ])
+
+    </script>
+  </body>
+</html>
