@@ -20,11 +20,11 @@ void print (const char *str){
 }
 
 void putchar (char ch) {
-  VIDEO_VRAM[(scr_line*80 + scr_column)*2] = ch;
-  VIDEO_VRAM[(scr_line*80 + scr_column)*2 +1] = 0x0f;
+  VIDEO_VRAM[(scr_line*COLUMNS + scr_column)*2] = ch;
+  VIDEO_VRAM[(scr_line*COLUMNS + scr_column)*2 +1] = 0x0f;
   scr_column++;
-  if (scr_column==80) { scr_column=0; scr_line++; }
-  if (scr_line==25) { clear_screen(); }
+  if (scr_column==COLUMNS) { scr_column=0; scr_line++; }
+  if (scr_line==LINES) { clear_screen(); }
 }
 
 void reset () {
@@ -33,13 +33,13 @@ void reset () {
 
 void new_line () {
   scr_column = 0, scr_line++;
-  if (scr_line==25) { clear_screen(); }
+  if (scr_line==LINES) { clear_screen(); }
 }
 
 void clear_screen () {
   scr_line = 0; scr_column = 0;
   char *video = VIDEO_VRAM;
-  for (int ch=0; ch<80*25; ch++) {
+  for (int ch=0; ch<COLUMNS*LINES; ch++) {
     *video++ = ' ';
     *video++ = 0x0f;
   }
