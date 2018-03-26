@@ -1,5 +1,6 @@
 int main (unsigned long magic, unsigned long mboot_struct);
 void print (const char *str);
+void putchar (char ch);
 void reset ();
 void new_line ();
 void clear_screen ();

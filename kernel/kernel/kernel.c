@@ -9,6 +9,7 @@ int main (unsigned long magic, unsigned long mboot_struct) {
   }
   print("Hello, i'm your kernel AND I AM FUCKING ALIVE!");
   new_line();
+  print("Bootloader: ");
   print((char *)mbi->boot_loader_name); //Display GRUB/Syslinux/our bootloader version
 }
 
