@@ -7,3 +7,4 @@ void clear_screen ();
 #define VIDEO_VRAM ((char*)0xb8000)
 #define LINES 25
 #define COLUMNS 80
+#define PRINT_FLAGS 0x0f

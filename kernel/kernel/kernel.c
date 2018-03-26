@@ -21,7 +21,7 @@ void print (const char *str){
 
 void putchar (char ch) {
   VIDEO_VRAM[(scr_line*COLUMNS + scr_column)*2] = ch;
-  VIDEO_VRAM[(scr_line*COLUMNS + scr_column)*2 +1] = 0x0f;
+  VIDEO_VRAM[(scr_line*COLUMNS + scr_column)*2 +1] = PRINT_FLAGS;
   scr_column++;
   if (scr_column==COLUMNS) { scr_column=0; scr_line++; }
   if (scr_line==LINES) { clear_screen(); }
@@ -41,6 +41,6 @@ void clear_screen () {
   char *video = VIDEO_VRAM;
   for (int ch=0; ch<COLUMNS*LINES; ch++) {
     *video++ = ' ';
-    *video++ = 0x0f;
+    *video++ = PRINT_FLAGS;
   }
 }
