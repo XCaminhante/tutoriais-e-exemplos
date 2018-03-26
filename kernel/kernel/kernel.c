@@ -3,7 +3,7 @@
 
 int main (unsigned long magic, unsigned long mboot_struct) {
   multiboot_info_t *mbi = (multiboot_info_t*)mboot_struct;
-  if (magic!=0x2badb002) {
+  if (magic!=MULTIBOOT_BOOTLOADER_MAGIC) {
     print("FUCK, invalid magic number...");
     return 0xBADC0DE;
   }
