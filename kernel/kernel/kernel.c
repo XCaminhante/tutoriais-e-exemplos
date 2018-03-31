@@ -44,7 +44,7 @@ void putchar (char ch) {
 }
 
 void reset () {
-  scr_line = 0, scr_column = 0; term_color=DEFAULT_TERM;
+  scr_line = 0, scr_column = 0; term_color = DEFAULT_TERM;
 }
 
 void new_line () {
