@@ -40,7 +40,7 @@ void putchar (char ch) {
   VIDEO_VRAM[(scr_line*COLUMNS + scr_column)*2 +1] = term_color;
   scr_column++;
   if (scr_column==COLUMNS) { scr_column=0, scr_line++; }
-  if (scr_line==LINES) { scr_column=0; scr_line=0; }
+  if (scr_line==LINES) { scr_line=0; }
 }
 
 void reset () {
