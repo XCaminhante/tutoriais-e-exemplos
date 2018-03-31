@@ -30,26 +30,23 @@ void print (const char *str){
     putchar(*str++);
 }
 
+#define NEWLINE \
+  { scr_column=0, scr_line++; \
+  if (scr_line==LINES) { scr_column=0; scr_line=0; } }
+
 void putchar (char ch) {
   if (ch == 10) {
-    scr_column=0; scr_line++;
-    if (scr_line==LINES) { scr_column=0; scr_line=0; }
+    NEWLINE;
     return;
   }
   VIDEO_VRAM[(scr_line*COLUMNS + scr_column)*2] = ch;
   VIDEO_VRAM[(scr_line*COLUMNS + scr_column)*2 +1] = term_color;
   scr_column++;
-  if (scr_column==COLUMNS) { scr_column=0; scr_line++; }
-  if (scr_line==LINES) { scr_column=0; scr_line=0; }
+  if (scr_column==COLUMNS) { NEWLINE; }
 }
 
 void reset () {
   scr_line = 0, scr_column = 0; term_color = DEFAULT_TERM;
-}
-
-void new_line () {
-  scr_column = 0, scr_line++;
-  if (scr_line==LINES) { clear_screen(); }
 }
 
 void clear_screen () {
