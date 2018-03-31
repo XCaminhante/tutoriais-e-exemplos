@@ -32,7 +32,7 @@ void print (const char *str){
 
 #define NEWLINE \
   { scr_column=0, scr_line++; \
-  if (scr_line==LINES) { scr_column=0; scr_line=0; } }
+  if (scr_line==LINES) { scr_line=0; } }
 
 void putchar (char ch) {
   if (ch == 10) {
