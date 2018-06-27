@@ -223,8 +223,8 @@ int main(int argc, char *argv[]) {
       return soq_servidor;
 
    while (1) {
-      sleep(1);
-      printf("%d usuários conectados\n", numero_clientes);
+      usleep(200);
+      printf("%d conectado(s)\n", numero_clientes);
       int ret = verificar_soquetes(soq_servidor);
       if (ret) return ret;
    }
